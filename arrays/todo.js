@@ -11,5 +11,9 @@ toDoList.forEach(function(toDo, index){
     console.log(`${num}. ${toDo}`)
 })
 
-
+for (count = 0; count < toDoList.length; count++){
+    const num = count + 1
+    const todo = toDoList[count]
+    console.log(`${num}. ${todo}`)
+}
 
