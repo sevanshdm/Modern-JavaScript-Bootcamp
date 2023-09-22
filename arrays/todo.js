@@ -1,18 +1,18 @@
  const todos = [{
     text: 'Go home',
-    completed: 'true'
+    completed: true
 }, {
     text: 'Workout',
-    completed: 'false'
+    completed: false
 }, {
     text: 'Take a shower',
-    completed: 'true'
+    completed: true
 }, {
     text: 'Eat dinner',
-    completed: 'false'
+    completed: false
 }, {
     text: 'Go to bed',
-    completed: 'true'
+    completed: true
 }]
 
 const deleteTodo = function (todos, todoText){
@@ -23,8 +23,16 @@ const deleteTodo = function (todos, todoText){
         todos.splice(index, 1)
     }
 }
-// 1. convert array to array of objects -> text, completed
-// 2. create function to remove a todo by text value
 
-deleteTodo(todos, 'Take a shower')
-console.log(todos)
+const getThingsToDo = function(todos){
+  return todos.filter(function(todo, index){
+    return !todo.completed
+  })  
+} 
+
+
+
+console.log(getThingsToDo(todos))
+
+// deleteTodo(todos, 'Take a shower')
+// console.log(todos)
