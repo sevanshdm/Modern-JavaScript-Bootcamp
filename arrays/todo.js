@@ -30,9 +30,22 @@ const getThingsToDo = function(todos){
   })  
 } 
 
+const sortTodos = function(todos){
+    todos.sort(function(a,b) {
+        if(!a.completed && b.completed){
+            return -1
+        } else if (!b.completed && a.completed){
+            return 1
+        } else{
+            return 0
+        }     
+    })
+}
 
+sortTodos(todos)
+console.log(todos)
 
-console.log(getThingsToDo(todos))
+//console.log(getThingsToDo(todos))
 
 // deleteTodo(todos, 'Take a shower')
 // console.log(todos)
