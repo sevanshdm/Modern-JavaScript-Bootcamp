@@ -1,19 +1,30 @@
-const toDoList = ['Go home', 'Workout', 'Take a shower', 'Eat dinner', 'Go to bed']
+ const todos = [{
+    text: 'Go home',
+    completed: 'true'
+}, {
+    text: 'Workout',
+    completed: 'false'
+}, {
+    text: 'Take a shower',
+    completed: 'true'
+}, {
+    text: 'Eat dinner',
+    completed: 'false'
+}, {
+    text: 'Go to bed',
+    completed: 'true'
+}]
 
-toDoList.splice(2,1)
-toDoList.push('Eat bacon')
-toDoList.shift()
-
-console.log(`You have ${toDoList.length} todos)`)
-
-toDoList.forEach(function(toDo, index){
-    const num = index + 1
-    console.log(`${num}. ${toDo}`)
-})
-
-for (count = 0; count < toDoList.length; count++){
-    const num = count + 1
-    const todo = toDoList[count]
-    console.log(`${num}. ${todo}`)
+const deleteTodo = function (todos, todoText){
+    const index = todos.findIndex(function(todo){
+        return todo.text.toLowerCase() === todoText.toLowerCase()
+    })
+    if (index > -1) {
+        todos.splice(index, 1)
+    }
 }
+// 1. convert array to array of objects -> text, completed
+// 2. create function to remove a todo by text value
 
+deleteTodo(todos, 'Take a shower')
+console.log(todos)
