@@ -1,8 +1,45 @@
-const notes = ['Note 1', 'Note 2', 'Note 3']
-//console.log(notes[notes.length-1]) //shows last item in list put -2 at end instead of -1 to show 2nd to last
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Brazil'
+}, {
+    title: 'Habits to work on',
+    body: 'Exercise, Eating a bit better'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
 
-console.log(notes.pop())
-notes.pop() // pop() produces a return value
-notes.push('My New Note')
-console.log(notes.length)
+
+const sortNotes = function (notes) {
+    notes.sort(function(a, b){
+        if(a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1
+        } else if (b.title.toLowerCase() < a.title.toLowerCase()){
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+
+const findNote = function(notes, noteTitle){
+    return notes.find(function(note, index){
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+}
+
+const findNotes = function(notes, query){
+    return notes.filter(function(note, index){
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
+}
+
+// console.log(findNotes(notes, 'eating'))
+
+// const note = findNote(notes, '!!!office modification')
+// console.log(note)
+
+sortNotes(notes)
 console.log(notes)
