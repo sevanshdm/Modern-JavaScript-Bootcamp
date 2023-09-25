@@ -7,7 +7,7 @@ const filters = {
 
 renderTodos(todos, filters)
 
-document.querySelector('#search-text').addEventListener('input',function(event){
+document.querySelector('#search-text').addEventListener('input', function(event){
     filters.searchText = event.target.value
     renderTodos(todos, filters)
 })
@@ -15,6 +15,7 @@ document.querySelector('#search-text').addEventListener('input',function(event){
 document.querySelector('#new-todo').addEventListener('submit', function(event){
     event.preventDefault()
     todos.push({
+        id: uuidv4(),
         text: event.target.elements.text.value,
         completed: false
     })
