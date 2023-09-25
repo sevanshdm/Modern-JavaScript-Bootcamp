@@ -38,8 +38,6 @@ document.querySelector('#search-text').addEventListener('input', function(event)
     renderNotes(notes, filters)
 })
 
-document.querySelector('#name-form').addEventListener("submit",function (event) {
-    event.preventDefault()
-    console.log(event.target.elements.firstName.value)
-    event.target.elements.firstName.value = ""
+document.querySelector('#for-fun').addEventListener('change', function(event){
+    console.log(event.target.checked)
 })
