@@ -1,36 +1,25 @@
-const notes = [{
-    title: 'My next trip',
-    body: 'I would like to go to Brazil'
-}, {
-    title: 'Habits to work on',
-    body: 'Exercise, Eating a bit better'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+let notes = getSavedNotes()
 
 const filters = {
-    searchText: ''
-}
-
-const renderNotes = function(notes, filters){
-    const filteredNotes = notes.filter(function(note){
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
-
-    document.querySelector('#notes').innerHTML = ''
-    
-    filteredNotes.forEach(function(note){
-        const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
-        document.querySelector('#notes').appendChild(noteEl)
-    })
+    searchText: '',
+    sortBy: 'byEdited'
 }
 
 renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function(event){
-    event.target.textContent = 'The button was clicked'
+    const id = uuidv4()
+    const timestamp = moment().valueOf()
+    notes.push({
+        id: id,
+        title: '',
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
+    })
+
+    saveNotes(notes)
+    location.assign(`/edit.html#${id}`)
 })
 
 document.querySelector('#search-text').addEventListener('input', function(event){
@@ -39,5 +28,13 @@ document.querySelector('#search-text').addEventListener('input', function(event)
 })
 
 document.querySelector('#filter-by').addEventListener('change', function(event){
-    console.log(event.target.value)
+    filters.sortBy = event.target.value
+    renderNotes(notes, filters)
+})
+
+window.addEventListener('storage', function(event){
+    if (event.key === 'notes') {
+        notes = JSON.parse(event.newValue)
+        renderNotes(notes,filters)
+    }
 })
