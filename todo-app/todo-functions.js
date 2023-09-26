@@ -1,8 +1,12 @@
 // Fetch existing todos from localStorage
 const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos')
-    return todosJSON ? JSON.parse(todosJSON) : [] // Conditional (ternary) operator "?"
 
+    try{
+        return todosJSON ? JSON.parse(todosJSON) : [] // Conditional (ternary) operator "?"
+    } catch (e) {
+        return []
+    }
     //Old way before the conditional operator
     // if(todosJSON !==null){
     //     return JSON.parse(todosJSON)

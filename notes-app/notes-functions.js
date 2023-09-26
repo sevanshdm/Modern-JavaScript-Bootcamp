@@ -1,7 +1,12 @@
 // Read existing notes from local storage
 const getSavedNotes = () => { // This is an arrow function
     const notesJSON = localStorage.getItem('notes')
-    return notesJSON ? JSON.parse(notesJSON) : [] // Conditional (ternary) operator "?"
+
+    try{
+        return notesJSON ? JSON.parse(notesJSON) : [] // Conditional (ternary) operator "?"
+    } catch (e){
+        return []
+    }
     
     //Old way before the conditional operator
     // if (notesJSON !== null){
