@@ -34,27 +34,15 @@ window.addEventListener('storage', function(event){
     }
 })
 
-// Unix Epoch - January 1st 1970 00:00:00
-const now = new Date()
-const timestamp = now.getTime()
 
-const myDate = new Date(timestamp)
-console.log(myDate.getFullYear())
 
-const dateOne = new Date('March 1 2017 12:00:00')
-const dateTwo = new Date()
-const dateOneTimestamp = dateOne.getTime()
-const dateTwoTimestamp = dateTwo.getTime()
+const birthDay = moment()
+birthDay.year(1997).month(0).date(29)
+console.log(birthDay.format('MMMM DD, YYYY'))
 
-if (dateOneTimestamp < dateTwoTimestamp) {
-    console.log(dateOne.toString())
-} else if (dateTwoTimestamp < dateOneTimestamp) {
-    console.log(dateTwo.toString())
-}
+// now.subtract(1, 'week').subtract(20, 'days')
+// console.log(now.format('MMMM Do, YYYY'))
+// console.log(now.fromNow())
+// const nowTimestamp = now.valueOf()
 
-// console.log(`Year: ${now.getFullYear()}`)
-// console.log(`Month: ${now.getMonth()}`)
-// console.log(`Day: ${now.getDate()}`)
-// console.log(`Hour: ${now.getHours()}`)
-// console.log(`Minute: ${now.getMinutes()}`)
-// console.log(`Seconds: ${now.getSeconds()}`)
+// console.log(moment(nowTimestamp).toString())
