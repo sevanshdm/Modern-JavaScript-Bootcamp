@@ -1,7 +1,7 @@
 // Fetch existing todos from localStorage
 const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos')
-    return todosJSON !== null ? JSON.parse(todosJSON) : [] // Conditional (ternary) operator "?"
+    return todosJSON ? JSON.parse(todosJSON) : [] // Conditional (ternary) operator "?"
 
     //Old way before the conditional operator
     // if(todosJSON !==null){
@@ -29,7 +29,7 @@ const removeTodo = (id) => {
 const toggleTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id)
 
-    if (todo !== undefined) {
+    if (todo) { // Before using truthy/falsey logic "if (todo !== undefined)""
         todo.completed = !todo.completed
     }
 }

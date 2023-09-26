@@ -14,7 +14,7 @@ let notes = getSavedNotes()
 // After arrow function
 let note = notes.find((note) => note.id === noteId)
 
-if (note === undefined){
+if (!note) { // is the same as if (note === undefined) {
     location.assign('/index.html')
 }
 
@@ -47,7 +47,7 @@ window.addEventListener('storage', (event) => {
         notes = JSON.parse(event.newValue)
         note = notes.find((note) => note.id === noteId)
         
-        if (note === undefined){
+        if (!note){ // before using truthy/falsey it was if (note === undefined){
             location.assign('/index.html')
         }
         
