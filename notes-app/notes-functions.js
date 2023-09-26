@@ -1,12 +1,14 @@
 // Read existing notes from local storage
 const getSavedNotes = () => { // This is an arrow function
     const notesJSON = localStorage.getItem('notes')
-
-    if (notesJSON !== null){
-        return JSON.parse(notesJSON)
-    } else {
-        return []
-    }
+    return notesJSON !== null ? JSON.parse(notesJSON) : [] // Conditional (ternary) operator "?"
+    
+    //Old way before the conditional operator
+    // if (notesJSON !== null){
+    //     return JSON.parse(notesJSON)
+    // } else {
+    //     return []
+    // }
 }
 
 // Save the notes to local storage
