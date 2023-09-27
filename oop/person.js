@@ -17,10 +17,13 @@ class Person {
     
         return bio
     }
-    setName(fullName) {
+    set fullName(fullName) {
         const names = fullName.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
     }
 }
 
@@ -30,7 +33,7 @@ class Employee extends Person {
         this.position = position
     }
     getBio(){
-        return `${this.firstName} ${this.lastName} is a ${this.position}.`
+        return `${this.fullName} is a ${this.position}.`
         //Shrek is a Teacher
     }
     getYearsLeft(){
@@ -53,6 +56,6 @@ class Student extends Person {
     }
 }
 
-const me = new Student(88, 'Shrek', 'Swampington', 33, [])
-me.updateGrade(-20)
+const me = new Employee('Teacher', 'Shrek', 'Swampington', 33, [])
+me.fullName = 'Donkey Talkerton'
 console.log(me.getBio())
