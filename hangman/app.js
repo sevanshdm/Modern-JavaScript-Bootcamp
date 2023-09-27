@@ -10,7 +10,7 @@ const game1 = new Hangman('Car parts', 2)
 puzzleEl.textContent = game1.Puzzle
 guessesEl.textContent = game1.StatusMessage
 
-window.addEventListener('keydown', function(event){
+window.addEventListener('keydown', (event) => {
     const guess = event.key
     game1.makeGuess(guess)
     puzzleEl.textContent = game1.Puzzle
@@ -21,12 +21,14 @@ window.addEventListener('keydown', function(event){
 const request = new XMLHttpRequest()
 
 request.addEventListener('readystatechange', (event) => {
-    if (event.target.readyState === 4) {
+    if (event.target.readyState === 4 && event.target.status === 200) {
         const data = JSON.parse(event.target.responseText)
         console.log(data)
+    } else if (event.target.readyState === 4) {
+        console.log('An error has taken place')
     }
 })
 
 // GET is the method as shown in the network tab in the dev tools
-request.open('GET', 'https://puzzle.mead.io/puzzle')
+request.open('GET', 'https://puzzle.mead.io/puzzle?wordCount=3')
 request.send()
