@@ -1,3 +1,5 @@
+// Prototypal Inheritance
+
 // Constructor function (typically have capital first letter.(Constructors are meant to be called with "new"))
 // Do not put return in constructor functions.
 const Person = function (firstName, lastName, age, likes = []) {
