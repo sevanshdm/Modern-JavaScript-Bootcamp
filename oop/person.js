@@ -24,10 +24,35 @@ class Person {
     }
 }
 
-const me = new Person('Shrek', 'Swampington', 33, ['Teaching', 'Biking'])
-me.setName('Gingy Baker')
+class Employee extends Person {
+    constructor(position, ...rest){
+        super(...rest)
+        this.position = position
+    }
+    getBio(){
+        return `${this.firstName} ${this.lastName} is a ${this.position}.`
+        //Shrek is a Teacher
+    }
+    getYearsLeft(){
+        return 65 - this.age
+    }
+}
+
+class Student extends Person {
+    constructor(grade, ...rest){
+        super(...rest)
+        this.grade = grade
+    }
+    updateGrade(change){
+        this.grade += change
+
+    }
+    getBio(){
+        const status = this.grad >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${status} the class.`
+    }
+}
+
+const me = new Student(88, 'Shrek', 'Swampington', 33, [])
+me.updateGrade(-20)
 console.log(me.getBio())
-
-const person2 = new Person('Donkey', 'Talkerton', 42)
-console.log(person2.getBio())
-
