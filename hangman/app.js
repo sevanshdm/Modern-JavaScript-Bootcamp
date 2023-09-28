@@ -23,8 +23,10 @@ getPuzzle('2').then((puzzle) => {
     console.log(`Error ${err}`)
 })
 
-
-getCountry('US').then((country) => {
+                    //success arg
+getLocation().then((location) => {
+    return getCountry(location.country)
+}).then((country) => {
     console.log(country.name.common)
 }).catch((err) => {
     console.log(`Error ${err}`)

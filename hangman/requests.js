@@ -24,4 +24,14 @@ const getCountry = (countryCode) => {
     })
 }
 
+const getLocation = () => {
+    return fetch('https://ipinfo.io/json?token=23867c384abeb4').then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error ('Unable to fetch location')
+        }
+    })
+}
+
 
