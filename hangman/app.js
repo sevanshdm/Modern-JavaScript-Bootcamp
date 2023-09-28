@@ -22,12 +22,9 @@ getPuzzle('2').then((puzzle) => {
 }).catch((err) => {
     console.log(`Error ${err}`)
 })
-
-                    //success arg
-getLocation().then((location) => {
-    return getCountry(location.country)
-}).then((country) => {
+                        // Success arg
+getCurrentCountry().then((country) => {
     console.log(country.name.common)
-}).catch((err) => {
-    console.log(`Error ${err}`)
+}).catch((error) => {
+    console.log(error)
 })
