@@ -17,7 +17,7 @@ window.addEventListener('keydown', (event) => {
     guessesEl.textContent = game1.StatusMessage
 })
 
-getPuzzle((error, puzzle) => {
+getPuzzle('2', (error, puzzle) => {
     if (error) {
         console.log(`Error: ${error}`)
     } else {
@@ -25,19 +25,12 @@ getPuzzle((error, puzzle) => {
     }
 })
 
-// const countryCode = "MX"
-// const countryRequest = new XMLHttpRequest()
+getCountry('US', (error, country) => {
+    if (error) {
+        console.log(`Error: ${error}`)
+    } else {
+        console.log(`Country name : ${country.name.common}`)
+    }
 
-// countryRequest.addEventListener('readystatechange', (event) => {
-//     if (event.target.readyState === 4 && event.target.status === 200) {
-//         const data = JSON.parse(event.target.responseText)
-//         const country = data.find((country) => country.cca2 === countryCode)
-//         console.log(country.name.common)
-//     } else if (event.target.readystate === 4) {
-//         console.log('Unable to fetch data.')
-//     }
+})
 
-// })
-
-// countryRequest.open('GET', 'https://restcountries.com/v3.1/all')
-// countryRequest.send()
