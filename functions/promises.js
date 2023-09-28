@@ -1,30 +1,52 @@
-// Callback
-const getDataCallback = (callback) => {
+// Callback are gross
+const getDataCallback = (num, callback) => {
     setTimeout(()=>{
-        callback('This is my callback error', undefined)
+        if (typeof num === 'number') {
+            callback(undefined, num * 2)
+        } else {
+            callback('Number must be provided')
+        }
     }, 2000)
 }
 
-getDataCallback((err, data) => {
+getDataCallback(2, (err, data) => {
     if (err) {
         console.log(err)
     } else {
-        console.log(data)
+        getDataCallback(data, (err, data) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(data)
+            }
+        })
     }
 })
 
 // Promise                 // resolve is called to say that things went well, reject is for when something failed.
-const getDataPromise = (data) =>  new Promise((resolve, reject) => {
+const getDataPromise = (num) =>  new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve(`This is my success data: ${data}`)
-        // reject('This is my promise error')
+        typeof num === 'number' ? resolve(num * 2) : reject('Number must be provided')
     }, 2000)
 })
+ 
+// Less optimal way to have a promise do something twice(there's more nesting with more iterations)
+getDataPromise(2).then((data) => {
+    getDataPromise(data).then((data) => {
+        console.log(`Promise data: ${data}`)
+    }, (err) => {
+        console.log(err)
+    })
+}, (err) => {
+})
 
-const myPromise = getDataPromise(123)
-
-myPromise.then((data) => {
+// Better way aka Promise Chaining(this one does something three times)
+getDataPromise(10).then((data) => {
+    return getDataPromise(data)
+}).then((data) => {
+    return getDataPromise(data)
+}).then((data) => {
     console.log(data)
-},(err) => {
+}).catch((err) => {
     console.log(err)
 })
