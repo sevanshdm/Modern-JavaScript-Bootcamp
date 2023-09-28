@@ -1,20 +1,14 @@
-const getPuzzle = (wordCount) => new Promise((resolve, reject) =>{
-        // Making an HTTP request
-        const request = new XMLHttpRequest()
-
-        request.addEventListener('readystatechange', (event) => {
-            if (event.target.readyState === 4 && event.target.status === 200) {
-                const data = JSON.parse(event.target.responseText)
-                resolve(data.puzzle)
-            } else if (event.target.readyState === 4) {
-                reject('An error has taken place')
-            }
-        })
-    
-        // GET is the method as shown in the network tab in the dev tools
-        request.open('GET', `https://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
-        request.send()
-})
+const getPuzzle = (wordCount) => {
+    return fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordCount}`).then ((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error ('Unable to fetch the puzzle')
+        }
+    }).then((data) => {
+        return data.puzzle
+    })
+}
 
 
 

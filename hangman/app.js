@@ -19,13 +19,25 @@ window.addEventListener('keydown', (event) => {
 
 getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
-}, (err) => {
+}).catch((err) => {
     console.log(`Error ${err}`)
 })
 
-getCountry('US').then((country) => {
-    console.log(country.name.common)
-}, (err) => {
-    console.log(`Error ${err}`)
-})
+// getCountry('US').then((country) => {
+//     console.log(country.name.common)
+// }, (err) => {
+//     console.log(`Error ${err}`)
+// })
 
+// Fetch API
+// fetch('https://puzzle.mead.io/puzzle', {}).then((response) => {
+//     if (response.status === 200) {
+//         return response.json() // This is a type of promise
+//     } else{
+//         throw new Error('Unable to fetch the puzzle.') // Throws this error to .catch below
+//     }
+// }).then((data) => {
+//     console.log(data.puzzle)
+// }).catch((err) => {
+//     console.log(err)
+// })
