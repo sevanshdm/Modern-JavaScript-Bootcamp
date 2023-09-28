@@ -17,20 +17,15 @@ window.addEventListener('keydown', (event) => {
     guessesEl.textContent = game1.StatusMessage
 })
 
-getPuzzle('2', (error, puzzle) => {
-    if (error) {
-        console.log(`Error: ${error}`)
-    } else {
-        console.log(puzzle)
-    }
+getPuzzle('2').then((puzzle) => {
+    console.log(puzzle)
+}, (err) => {
+    console.log(`Error ${err}`)
 })
 
-getCountry('US', (error, country) => {
-    if (error) {
-        console.log(`Error: ${error}`)
-    } else {
-        console.log(`Country name : ${country.name.common}`)
-    }
-
+getCountry('US').then((country) => {
+    console.log(country.name.common)
+}, (err) => {
+    console.log(`Error ${err}`)
 })
 

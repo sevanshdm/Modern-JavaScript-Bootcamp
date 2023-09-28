@@ -14,12 +14,14 @@ getDataCallback((err, data) => {
 })
 
 // Promise                 // resolve is called to say that things went well, reject is for when something failed.
-const myPromise = new Promise((resolve, reject) => {
+const getDataPromise = (data) =>  new Promise((resolve, reject) => {
     setTimeout(() => {
-        // resolve('This is the promise data')
-        reject('This is my promise error')
+        resolve(`This is my success data: ${data}`)
+        // reject('This is my promise error')
     }, 2000)
 })
+
+const myPromise = getDataPromise(123)
 
 myPromise.then((data) => {
     console.log(data)
