@@ -17,35 +17,27 @@ window.addEventListener('keydown', (event) => {
     guessesEl.textContent = game1.StatusMessage
 })
 
-// Making an HTTP request
-const request = new XMLHttpRequest()
-
-request.addEventListener('readystatechange', (event) => {
-    if (event.target.readyState === 4 && event.target.status === 200) {
-        const data = JSON.parse(event.target.responseText)
-        console.log(data)
-    } else if (event.target.readyState === 4) {
-        console.log('An error has taken place')
+getPuzzle((error, puzzle) => {
+    if (error) {
+        console.log(`Error: ${error}`)
+    } else {
+        console.log(puzzle)
     }
 })
 
-// GET is the method as shown in the network tab in the dev tools
-request.open('GET', 'https://puzzle.mead.io/puzzle?wordCount=3')
-request.send()
+// const countryCode = "MX"
+// const countryRequest = new XMLHttpRequest()
 
-const countryCode = "MX"
-const countryRequest = new XMLHttpRequest()
+// countryRequest.addEventListener('readystatechange', (event) => {
+//     if (event.target.readyState === 4 && event.target.status === 200) {
+//         const data = JSON.parse(event.target.responseText)
+//         const country = data.find((country) => country.cca2 === countryCode)
+//         console.log(country.name.common)
+//     } else if (event.target.readystate === 4) {
+//         console.log('Unable to fetch data.')
+//     }
 
-countryRequest.addEventListener('readystatechange', (event) => {
-    if (event.target.readyState === 4 && event.target.status === 200) {
-        const data = JSON.parse(event.target.responseText)
-        const country = data.find((country) => country.cca2 === countryCode)
-        console.log(country.name.common)
-    } else if (event.target.readystate === 4) {
-        console.log('Unable to fetch data.')
-    }
+// })
 
-})
-
-countryRequest.open('GET', 'https://restcountries.com/v3.1/all')
-countryRequest.send()
+// countryRequest.open('GET', 'https://restcountries.com/v3.1/all')
+// countryRequest.send()
