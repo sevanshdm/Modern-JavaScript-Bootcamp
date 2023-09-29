@@ -1,1 +1,1 @@
-(()=>{console.log("Donkey");const o=new class{myMethod(){return"Testing"}};console.log(o.myMethod())})();
+(()=>{"use strict";console.log("utilites.js"),console.log("index.js"),console.log(33),console.log(`${"Shrek".toUpperCase()}!`)})();
