@@ -1,35 +1,27 @@
 'use strict'
 
-// Read existing notes from local storage
-const getSavedNotes = () => { // This is an arrow function
+// Read existing notes from localStorage
+const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes')
 
-    try{
-        return notesJSON ? JSON.parse(notesJSON) : [] // Conditional (ternary) operator "?"
-    } catch (e){
+    try {
+        return notesJSON ? JSON.parse(notesJSON) : []
+    } catch (e) {
         return []
-    }
-    
-    //Old way before the conditional operator
-    // if (notesJSON !== null){
-    //     return JSON.parse(notesJSON)
-    // } else {
-    //     return []
-    // }
+    } 
 }
 
-// Save the notes to local storage
+// Save the notes to localStorage
 const saveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
-
 }
 
 // Remove a note from the list
 const removeNote = (id) => {
-    const noteIndex = notes.findIndex((note) => note.id === id) // this is also an arrow function
+    const noteIndex = notes.findIndex((note) => note.id === id)
 
     if (noteIndex > -1) {
-        notes.splice(noteIndex,1)
+        notes.splice(noteIndex, 1)
     }
 }
 
@@ -39,25 +31,12 @@ const generateNoteDOM = (note) => {
     const textEl = document.createElement('p')
     const statusEl = document.createElement('p')
 
-    //remove button on main screen
-//     const button = document.createElement('button')
-
-// // Setup the remove note button
-//     button.textContent = 'x'
-//     noteEl.appendChild(button)
-//     button.addEventListener('click', () => {
-//         removeNote(note.id)
-//         saveNotes(notes)
-//         renderNotes(notes,filters)
-//     })
-
     // Setup the note title text
-    if (note.title.length > 0){
+    if (note.title.length > 0) {
         textEl.textContent = note.title
-    } else{
+    } else {
         textEl.textContent = 'Unnamed note'
     }
-    //textEl.setAttribute('target', '_blank')
     textEl.classList.add('list-item__title')
     noteEl.appendChild(textEl)
 
@@ -75,18 +54,18 @@ const generateNoteDOM = (note) => {
 
 // Sort your notes by one of three ways
 const sortNotes = (notes, sortBy) => {
-    if (sortBy === 'byEdited'){
+    if (sortBy === 'byEdited') {
         return notes.sort((a, b) => {
-            if (a.updatedAt > b.updatedAt){
+            if (a.updatedAt > b.updatedAt) {
                 return -1
-            } else if (a.updatedAt < b.updatedAt){
+            } else if (a.updatedAt < b.updatedAt) {
                 return 1
             } else {
                 return 0
             }
         })
-    } else if (sortBy === 'byCreated'){
-        return notes.sort((a,b) => {
+    } else if (sortBy === 'byCreated') {
+        return notes.sort((a, b) => {
             if (a.createdAt > b.createdAt) {
                 return -1
             } else if (a.createdAt < b.createdAt) {
@@ -95,10 +74,10 @@ const sortNotes = (notes, sortBy) => {
                 return 0
             }
         })
-    } else if (sortBy === 'alphabetical'){
-        return notes.sort((a,b) => {
+    } else if (sortBy === 'alphabetical') {
+        return notes.sort((a, b) => {
             if (a.title.toLowerCase() < b.title.toLowerCase()) {
-                return -1 
+                return -1
             } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
                 return 1
             } else {
@@ -117,8 +96,8 @@ const renderNotes = (notes, filters) => {
     const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
     notesEl.innerHTML = ''
-    
-    if(filteredNotes.length > 0){
+
+    if (filteredNotes.length > 0) {
         filteredNotes.forEach((note) => {
             const noteEl = generateNoteDOM(note)
             notesEl.appendChild(noteEl)
@@ -126,11 +105,12 @@ const renderNotes = (notes, filters) => {
     } else {
         const emptyMessage = document.createElement('p')
         emptyMessage.textContent = 'No notes to show'
-        // adds class to html doc
         emptyMessage.classList.add('empty-message')
         notesEl.appendChild(emptyMessage)
     }
 }
 
 // Generate the last edited message
-const generateLastEdited = (timestamp) => `Last edited ${moment(timestamp).fromNow()}`
+const generateLastEdited = (timestamp) => {
+    return `Last edited ${moment(timestamp).fromNow()}`
+}
