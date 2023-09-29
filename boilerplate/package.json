@@ -4,12 +4,15 @@
   "description": "",
   "main": "input.js",
   "scripts": {
+    "serve": "live-server public", 
     "build": "babel src/index.js --out-file public/scripts/bundle.js --presets @babel/env --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.23.0",
     "@babel/core": "^7.23.0",
-    "@babel/preset-env": "^7.22.20"
+    "@babel/preset-env": "^7.22.20",
+    "live-server": "^1.2.2"
   }
 }
