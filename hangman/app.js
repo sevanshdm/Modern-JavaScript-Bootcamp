@@ -1,14 +1,44 @@
+// HTTP (Hypertext Transfer Protocol)
+// Request - What do we want to do
+// Response - What was actually done
+
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
 
-const game1 = new Hangman('Car parts', 2)
+let game1 
 
-puzzleEl.textContent = game1.Puzzle
-guessesEl.textContent = game1.StatusMessage
 
-window.addEventListener('keydown', function(event){
+window.addEventListener('keydown', (event) => {
     const guess = event.key
     game1.makeGuess(guess)
-    puzzleEl.textContent = game1.Puzzle
-    guessesEl.textContent = game1.StatusMessage
+    render()
 })
+
+const render = () => {
+    puzzleEl.textContent = game1.puzzle
+    guessesEl.textContent = game1.statusMessage
+}
+
+const startGame = async () => {
+    const puzzle = await getPuzzle('2')
+    game1 = new Hangman(puzzle, 5)
+    render()
+}
+
+document.querySelector('#reset').addEventListener('click', startGame)
+
+startGame()
+
+// getPuzzle('2').then((puzzle) => {
+//     console.log(puzzle)
+// }).catch((err) => {
+//     console.log(`Error ${err}`)
+// })
+
+
+                        // Success arg
+// getCurrentCountry().then((country) => {
+//     console.log(country.name.common)
+// }).catch((error) => {
+//     console.log(error)
+// })
