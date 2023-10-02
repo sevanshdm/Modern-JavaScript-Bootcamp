@@ -5,6 +5,18 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'public/scripts'),
         filename: 'bundle.js'
+    },
+    module: {
+        rules: [{
+            test: /\.js$/, //regular expression the $ makes sure that what is put before it is at the end of the string
+            exclude: /node_modules/, //regular expression
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/env']
+                }
+            }
+        }]
     }
 }
 

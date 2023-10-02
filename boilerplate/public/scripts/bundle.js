@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("index.js"),console.log(33),console.log(`${"Shrek".toUpperCase()}!`),console.log(10*10)})();
+(()=>{"use strict";console.log("index.js"),console.log(33),console.log("".concat("Shrek".toUpperCase(),"!")),console.log(10*10)})();
