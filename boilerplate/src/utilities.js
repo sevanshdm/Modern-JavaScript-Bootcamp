@@ -10,7 +10,7 @@
 
 const add =(a,b) => a + b
 
-const name = 'Shrek'
+const name = 'Donkey'
 
 const square = (x) => x * x
 
