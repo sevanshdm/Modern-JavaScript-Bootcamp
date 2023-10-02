@@ -29,7 +29,7 @@ class Person {
 
 class Employee extends Person {
     constructor(position, ...rest){
-        super(...rest)
+        super(...rest) // spread operator
         this.position = position
     }
     getBio(){
@@ -42,8 +42,8 @@ class Employee extends Person {
 }
 
 class Student extends Person {
-    constructor(grade, ...rest){
-        super(...rest)
+    constructor(grade, ...rest){ // spread operator
+        super(...rest) // spread operator
         this.grade = grade
     }
     updateGrade(change){

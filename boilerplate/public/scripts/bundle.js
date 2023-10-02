@@ -1,2 +1,2 @@
-(()=>{"use strict";console.log("from my code"),console.log("index.js"),console.log(36),console.log("".concat("Shrek".toUpperCase(),"!")),console.log(10*10)})();
+console.log(function(n){for(var e=0,o=arguments.length,r=new Array(o>1?o-1:0),a=1;a<o;a++)r[a-1]=arguments[a];r.forEach((function(n){return e+=n}));var c=e/r.length;return"The average ".concat(n," is ").concat(c,".")}("grade",0,100,88,64)),function(n,e){console.log("Team: ".concat(n)),console.log("Coach: ".concat(e));for(var o=arguments.length,r=new Array(o>2?o-2:0),a=2;a<o;a++)r[a-2]=arguments[a];console.log("Players: ".concat(r.join(", ")))}("Liberty","Casey Penn","Marge","Aiden","Herbert","Sherry");
 //# sourceMappingURL=bundle.js.map
