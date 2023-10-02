@@ -6,7 +6,6 @@ const guessesEl = document.querySelector('#guesses')
 
 let game1 
 
-
 window.addEventListener('keydown', (event) => {
     const guess = event.key
     game1.makeGuess(guess)
