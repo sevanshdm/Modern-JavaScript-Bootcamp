@@ -10,9 +10,10 @@
 
 const add =(a,b) => a + b
 
-const name = 'Donkey'
+const name = 'Shrek'
 
 const square = (x) => x * x
+console.log('from my code')
 
 // Alternative way to define all exports in one place (typically in the last line of file)
 export { add, name, square as default }

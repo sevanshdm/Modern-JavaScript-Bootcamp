@@ -17,7 +17,8 @@ module.exports = {
                 }
             }
         }]
-    }
+    },
+    devtool: 'source-map' // Shows the source of where code comes from in the dev tools console from your own code instead of what Babel creates
 }
 
 
