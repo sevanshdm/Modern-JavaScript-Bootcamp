@@ -55,4 +55,4 @@ const toggleTodo = (id) => {
 
 loadTodos()
 
-export { getTodos, createTodo, removeTodo, toggleTodo }
+export { getTodos, createTodo, removeTodo, toggleTodo, loadTodos }
