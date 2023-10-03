@@ -1,3 +1,4 @@
+/*
 //                         // Rest Parameters
 // const calculateAverage = (thing, ...numbers) => {
 //     let sum = 0
@@ -78,3 +79,39 @@ let overview = {
 }
 
 console.log(overview)
+*/
+
+                                        // Destructuring
+const todo = {
+    id: 'asdfjklw',
+    text: 'Pay the bills',
+    completed: false   
+}
+
+// const text = todo.text
+// const completed = todo.completed
+
+const printTodo = ({text, completed}) => { // destructuring in function parameters, insert { } in the ( )
+    console.log(`${text}: ${completed}`)
+}
+printTodo(todo)
+
+//renames the new var to todoText, adds details to object and gives a value
+const { text:todoText, completed, details = 'No details provided', ...others } = todo // Destructuring, this gets the values from the todo object and creates two new variables
+
+console.log(todoText)
+console.log(completed)
+console.log(details)
+console.log(others)
+
+// Destructuring an array
+const age = [65, 0, 13]
+                            // creates new item in array and assigns it value
+//const [firstAge, secondAge, , lastAge = 123] = age // each item gets it's value in the order which they are created. the ', ,' skips an index in the array
+
+const [firstAge, ...otherAges] = age
+
+console.log(firstAge) // 65
+console.log(otherAges) // 0, 13
+//console.log(secondAge) // 0
+//console.log(lastAge) // 123
