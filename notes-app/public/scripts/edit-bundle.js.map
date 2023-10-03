@@ -1,0 +1,1 @@
+{"version":3,"file":"edit-bundle.js","mappings":"AAAAA,QAAQC,IAAI","sources":["webpack://boilerplate/./src/edit.js"],"sourcesContent":["console.log('edit.js')"],"names":["console","log"],"sourceRoot":""}
