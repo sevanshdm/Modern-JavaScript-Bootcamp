@@ -43,6 +43,38 @@ const citiesCopy = [...cities, 'Belo Horizonte'] // You can use a Spread operato
 console.log(cities)
 console.log(citiesCopy)
 
-// Spread Operator with Objects
 
+                                // Spread Operator with Objects
+let house = {
+    bedrooms: 2,
+    bathrooms: 1.5,
+    yearBuilt: 2017
+}
 
+// Copies house object into newHouse
+let newHouse = {
+    basement: true,
+    ...house, // copies house values, order matters if this was put after "bedrooms" it would override it.
+    bedrooms: 3
+}
+// newHouse.yearBuilt = 2018
+
+console.log(house)
+console.log(newHouse)
+
+const person = {
+    name: 'Shrek',
+    age: 33
+}
+
+const location = {
+    city: 'Sherwood Forest',
+    country: 'Duloc'
+}
+
+let overview = {
+    ...person,
+    ...location
+}
+
+console.log(overview)
